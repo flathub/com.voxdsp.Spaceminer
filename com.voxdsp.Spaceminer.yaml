@@ -36,4 +36,4 @@ modules:
     sources:
       - type: git
         url: https://notabug.org/Vandarin/SpaceMiner.git
-        commit: 518234dcac49e38cc7b5e1bfb23c5cb32af8de17
+        commit: 0c4d97d0c92798cbd6622bbc947d9ce326413ba1
