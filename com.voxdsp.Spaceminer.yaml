@@ -1,6 +1,6 @@
 app-id: com.voxdsp.Spaceminer
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: spaceminer
 rename-icon: spaceminer
@@ -11,6 +11,10 @@ finish-args:
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
 modules:
   - name: glfw
     buildsystem: cmake-ninja
@@ -28,12 +32,14 @@ modules:
   - name: spaceminer
     buildsystem: simple
     build-commands:
-      - cc main.c glad_gl.c -Ofast -L/app/lib -lglfw -lm -o spaceminer
+      - cc SpaceMiner/main.c SpaceMiner/glad_gl.c -Ofast -L/app/lib -lglfw -lm -o spaceminer
       - install -Dm 0755 spaceminer -t ${FLATPAK_DEST}/bin
-      - install -Dm 0644 flatpak/spaceminer.desktop ${FLATPAK_DEST}/share/applications/spaceminer.desktop
-      - install -Dm 0644 flatpak/spaceminer.appdata.xml ${FLATPAK_DEST}/share/metainfo/spaceminer.appdata.xml
-      - install -Dm 0644 flatpak/spaceminer.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/spaceminer.png
+      - install -Dm 0644 SpaceMiner/flatpak/spaceminer.desktop ${FLATPAK_DEST}/share/applications/spaceminer.desktop
+      - install -Dm 0644 SpaceMiner/flatpak/spaceminer.appdata.xml ${FLATPAK_DEST}/share/metainfo/spaceminer.appdata.xml
+      - install -Dm 0644 SpaceMiner/flatpak/spaceminer.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/spaceminer.png
     sources:
       - type: git
-        url: https://notabug.org/Vandarin/SpaceMiner.git
-        commit: 34ff855bfdb28b8f499922cb87c437b4f8d66a4e
+        url: https://github.com/mrbid/NotABug-Mirror.git
+        commit: 9783867161be015ec0f46c9ec19c758716d566f0
+      - type: patch
+        path: fix-appdata.patch

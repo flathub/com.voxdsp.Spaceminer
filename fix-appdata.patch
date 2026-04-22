@@ -1,0 +1,62 @@
+From 37a61d04978f05f1d09926c705d7f29bb75073a6 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Wed, 22 Apr 2026 14:56:24 +0300
+Subject: [PATCH] Fix appdata paper cuts
+
+Signed-off-by: Sabri Ünal <yakushabb@gmail.com>
+---
+ SpaceMiner/flatpak/spaceminer.appdata.xml | 28 +++++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/SpaceMiner/flatpak/spaceminer.appdata.xml b/SpaceMiner/flatpak/spaceminer.appdata.xml
+index 359793c..c9831e5 100644
+--- a/SpaceMiner/flatpak/spaceminer.appdata.xml
++++ b/SpaceMiner/flatpak/spaceminer.appdata.xml
+@@ -1,13 +1,15 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<application>
+-	<id type="desktop">spaceminer.desktop</id>
++<component type="desktop-application">
++	<id>spaceminer.desktop</id>
+ 	<metadata_license>CC-BY-4.0</metadata_license>
+ 	<project_license>GPL-2.0-only</project_license>
+ 	<name>Spaceminer</name>
+ 	<summary>A 3D space mining game</summary>
+ 	<description>
+-		<p>The aim of the game, whatever you want, try and mine every asteroid if you can. Or just see how long you can survive in space.</p>	
+-		<p>On the back of his head are four color cubes, these are minerals collected from mining asteroids, these colors are also present in asteroids, these minerals are converted into on of the four actions: break/mine, repel, stop, and shield (when shield is empty the two blue fuel cylinders will be consumed as shield).</p>		
++		<p>The aim of the game, whatever you want, try and mine every asteroid if you can. Or just see how long you can survive in space.</p>
++		<p>On the back of his head are four color cubes, these are minerals collected from mining asteroids, these colors are also present in asteroids,
++    these minerals are converted into on of the four actions: break/mine, repel, stop, and shield (when shield is empty the two blue fuel
++    cylinders will be consumed as shield).</p>
+ 		<ul>
+ 			<li>ESCAPE = Release mouse lock</li>
+ 			<li>N = New Game</li>
+@@ -28,11 +30,19 @@
+ 		</ul>
+ 	</description>
+ 	<screenshots>
+-		<screenshot>https://dashboard.snapcraft.io/site_media/appmedia/2022/01/Screenshot_2022-01-02_18-12-12.png</screenshot>
++		<screenshot type="default">
++        <image>https://dashboard.snapcraft.io/site_media/appmedia/2022/01/Screenshot_2022-01-02_18-12-12.png</image>
++    </screenshot>
+ 	</screenshots>
+-	<url type="homepage">https://notabug.org/Vandarin/Spaceminer</url>
+-	<releases>
++  <url type="homepage">https://github.com/mrbid/NotABug-Mirror/</url>
++  <url type="bugtracker">https://github.com/mrbid/NotABug-Mirror/issues</url>
++  <url type="vcs-browser">https://github.com/mrbid/NotABug-Mirror/tree/main/SpaceMiner</url>
++  <developer id="com.voxdsp">
++    <name>James William Fletcher</name>
++  </developer>
++  <releases>
+ 		<release version="3.0" date="2023-11-15" />
+ 	</releases>
+-	<content_rating type="oars-1.0" />
+-</application>
++	<content_rating type="oars-1.1" />
++  <launchable type="desktop-id">spaceminer.desktop</launchable>
++</component>
+--
+libgit2 1.7.2
+
